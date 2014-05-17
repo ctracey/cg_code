@@ -7,6 +7,16 @@ module FlowerShop
 
     def execute
       puts "running Flower Shop Invoicer"
+
+      order_invoicer = Invoicer.new(order)
+      order_invoicer.invoice
+    end
+
+    private
+
+    def order
+      order ||= Order.new(order_path)
+      order
     end
 
   end
