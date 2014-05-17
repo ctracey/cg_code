@@ -18,6 +18,14 @@ Run this command to install dependencies. You need to have Bundler installed.
 bundle install
 ```
 
+Building
+--------
+
+The ci task runs the automated tests, builds the gem and installs the gem locally
+```
+bundle exec rake ci
+```
+
 Running the Flower Shop Invoicer
 ---------------------------
 
