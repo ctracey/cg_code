@@ -1,5 +1,5 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
-require 'flower_shop'
+require 'flower_shop/version'
 
 Gem::Specification.new do |gem|
   gem.name        = "flower_shop"
@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency 'byebug'
+  gem.add_development_dependency 'rake'
 
 end
 
