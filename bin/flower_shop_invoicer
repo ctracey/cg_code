@@ -4,4 +4,4 @@ require 'rubygems'
 require 'bundler/setup'
 require 'flower_shop'
 
-puts "Flower Shop Invoicer"
+FlowerShop::CLI.run
