@@ -1,4 +1,12 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec
+
+desc 'run test, build gem and install gem'
+task :ci => %w{spec gem:build gem:install}
 
 namespace :gem do
 
