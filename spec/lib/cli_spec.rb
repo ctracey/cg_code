@@ -8,6 +8,7 @@ describe "FlowerShop::CLI" do
     let(:invoicer) { double("Invoicer") }
 
     it "creates and invoice for the order" do
+      allow(FlowerShop::Order).to receive(:new) { double("Order") }
       allow(FlowerShop::Invoicer).to receive(:new) { invoicer }
       expect(invoicer).to receive(:invoice)
 
