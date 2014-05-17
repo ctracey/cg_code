@@ -24,4 +24,16 @@ describe "flower shop invoicer" do
     end
   end
 
+  context "options" do
+    describe "help option" do
+
+      let(:console_output) { `#{command} -h` }
+
+      it "describes the order_path parameter" do
+        console_output.include?("ORDER_PATH                    Path to order file").should be_true
+      end
+
+    end
+  end
+
 end

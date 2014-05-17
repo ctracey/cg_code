@@ -23,3 +23,14 @@ Running the Flower Shop Invoicer
 
 After you have built and installed the gem you can run flower_shop_invoicer
 
+### Help
+Run this command to get help
+```
+flower_shop_invoicer -h
+```
+
+### Example:
+```
+flower_shop_invoicer spec/fixtures/order.txt
+```
+
