@@ -14,12 +14,21 @@ describe "FlowerShop::InvoiceItem" do
   end
 
   describe "#to_s" do
+    before do
+      bundles = double(FlowerShop::Bundles, cost: 5.0, to_s: "")
+      subject.bundles = bundles
+    end
+
     it "includes the order item quantity" do
       expect(subject.to_s).to match /^3/
     end
 
     it "includes the order item code" do
-      expect(subject.to_s).to match /\sR12$/
+      expect(subject.to_s).to match /\sR12\s/
+    end
+
+    it "includes the total cost for the bundles" do
+      expect(subject.to_s).to match /\$5.00$/
     end
   end
 

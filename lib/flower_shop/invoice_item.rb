@@ -5,11 +5,10 @@ module FlowerShop
 
     def initialize(order_item)
       @order_item = order_item
-      @bundles = []
     end
 
     def to_s
-      "#{@order_item.quantity} #{@order_item.code}\n#{bundles}"
+      "#{@order_item.quantity} #{@order_item.code} $#{'%.02f' % bundles.cost}\n#{bundles}"
     end
   end
 end

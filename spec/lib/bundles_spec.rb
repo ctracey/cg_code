@@ -15,6 +15,16 @@ describe "FlowerShop::Bundles" do
 
       expect(subject.bundles).to eq({10 => {quantity: 2, price: 10.0}})
     end
+
+    it "adds the bundle cost to the bundles total cost" do
+      expect(subject.cost).to eq 0.0
+
+      subject.add_bundle(10)
+      expect(subject.cost).to eq 10.0
+
+      subject.add_bundle(10)
+      expect(subject.cost).to eq 20.0
+    end
   end
 
   describe "to_s" do

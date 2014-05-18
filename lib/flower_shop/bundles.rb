@@ -1,11 +1,12 @@
 module FlowerShop
   class Bundles
 
-    attr_accessor :bundles
+    attr_accessor :bundles, :cost
 
     def initialize(product_bundles)
       @product_bundles = product_bundles
       @bundles = {}
+      @cost = 0.00
     end
 
     def add_bundle(bundle_size)
@@ -20,6 +21,7 @@ module FlowerShop
       end
 
       bundle[:quantity] += 1
+      @cost += bundle[:price]
     end
 
     def to_s
