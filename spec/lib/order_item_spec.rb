@@ -20,5 +20,15 @@ describe "FlowerShop::OrderItem" do
       order_item = FlowerShop::OrderItem.parse(order_text)
       expect(order_item.code).to eq "R12"
     end
+
+    context "invalid order item" do
+      let(:order_text) { "R12" }
+
+      it "raises an error for invalid order items" do
+        expect {
+          FlowerShop::OrderItem.parse(order_text)
+        }.to raise_error "Invalid order item: #{order_text}"
+      end
+    end
   end
 end

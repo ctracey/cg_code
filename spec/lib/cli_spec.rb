@@ -14,6 +14,14 @@ describe "FlowerShop::CLI" do
 
       subject.execute()
     end
+
+    it "handles errors" do
+      STDOUT.should_receive(:puts).with('running Flower Shop Invoicer')
+      STDOUT.should_receive(:puts).with("ERROR bad stuff happened")
+
+      allow(FlowerShop::Order).to receive(:new).and_raise("bad stuff happened")
+      subject.execute()
+    end
   end
 
   describe "#order" do

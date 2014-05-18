@@ -6,10 +6,14 @@ module FlowerShop
     parameter "ORDER_PATH", "Path to order file"
 
     def execute
-      puts "running Flower Shop Invoicer"
+      begin
+        puts "running Flower Shop Invoicer"
 
-      order_invoicer = Invoicer.new(order)
-      order_invoicer.invoice
+        order_invoicer = Invoicer.new(order)
+        order_invoicer.invoice
+      rescue Exception => e
+        puts "ERROR #{e.message}"
+      end
     end
 
     private

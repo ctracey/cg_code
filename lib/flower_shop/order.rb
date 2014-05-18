@@ -2,7 +2,12 @@ module FlowerShop
   class Order
 
     def initialize(path)
-      @order = File.read(path)
+      begin
+        raise "not a txt file" if /.*\.txt$/.match(path).nil?
+        @order = File.read(path)
+      rescue Exception => e
+        raise "Can't read order file #{path}: #{e.message}"
+      end
     end
 
     def items
