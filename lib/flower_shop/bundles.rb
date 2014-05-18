@@ -22,5 +22,15 @@ module FlowerShop
       bundle[:quantity] += 1
     end
 
+    def to_s
+      string = ""
+
+      bundles.each_pair do |size, data|
+        string += "\t#{data[:quantity]} X #{size} $#{'%.02f' % data[:price]}\n"
+      end
+
+      string.chop
+    end
+
   end
 end

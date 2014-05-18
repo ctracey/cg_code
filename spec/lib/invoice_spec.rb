@@ -21,7 +21,8 @@ describe FlowerShop::Invoice do
       subject.add_item(invoice_item1)
       subject.add_item(invoice_item2)
 
-      expect(subject.to_s).to eq "1 R11\n2 R12\n"
+      expect(subject.to_s).to match /^1 R11$/
+      expect(subject.to_s).to match /^2 R12$/
     end
   end
 

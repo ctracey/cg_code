@@ -9,7 +9,7 @@ module FlowerShop
     end
 
     def to_s
-      "#{@order_item.quantity} #{@order_item.code}"
+      "#{@order_item.quantity} #{@order_item.code}\n#{bundles}"
     end
   end
 end
