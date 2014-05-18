@@ -31,4 +31,11 @@ describe "FlowerShop::OrderItem" do
       end
     end
   end
+
+  describe "#to_s" do
+    it "returns a string including quantity and code" do
+      order_item = FlowerShop::OrderItem.parse("15 T05")
+      expect(order_item.to_s).to eq "15 T05"
+    end
+  end
 end

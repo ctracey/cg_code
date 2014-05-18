@@ -11,6 +11,10 @@ module FlowerShop
       OrderItem.new(quantity, code)
     end
 
+    def to_s
+      "#{@quantity} #{@code}"
+    end
+
     private
 
     def initialize(quantity, code)
