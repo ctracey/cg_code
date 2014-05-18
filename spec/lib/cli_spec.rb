@@ -2,15 +2,30 @@ require 'spec_helper'
 
 describe "FlowerShop::CLI" do
 
-  subject { FlowerShop::CLI.new("path") }
+  subject { FlowerShop::CLI.new("spec/fixtures/order.txt") }
 
   describe "#execute" do
     let(:invoicer) { double("Invoicer") }
 
-    it "creates and invoice for the order" do
+    before do
       allow(FlowerShop::Order).to receive(:new) { double("Order") }
+    end
+
+    it "creates and invoice for the order" do
       allow(FlowerShop::Invoicer).to receive(:new) { invoicer }
+      allow(STDOUT).to receive(:puts)
       expect(invoicer).to receive(:invoice)
+
+      subject.execute()
+    end
+
+    it "prints the invoice" do
+      invoice = "INVOICE"
+      invoicer = double(FlowerShop::Invoicer, invoice: invoice)
+      allow(FlowerShop::Invoicer).to receive(:new) { invoicer }
+
+      STDOUT.should_receive(:puts).with('running Flower Shop Invoicer')
+      STDOUT.should_receive(:puts).with(invoice)
 
       subject.execute()
     end

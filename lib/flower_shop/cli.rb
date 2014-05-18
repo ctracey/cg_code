@@ -9,8 +9,12 @@ module FlowerShop
       begin
         puts "running Flower Shop Invoicer"
 
+        #generate invoce
         order_invoicer = Invoicer.new(order)
-        order_invoicer.invoice
+        invoice = order_invoicer.invoice
+
+        #print the invoice
+        puts invoice
       rescue Exception => e
         puts "ERROR #{e.message}"
       end
