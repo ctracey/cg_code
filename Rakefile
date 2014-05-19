@@ -1,7 +1,11 @@
 $LOAD_PATH.push File.expand_path("../lib", __FILE__)
 require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:spec)
+RSpec::Core::RakeTask.new(:spec).pattern  = './spec/lib/flower_shop{,/*/**}/*_spec.rb'
+
+desc 'test case that demonstrates the complete solution'
+e2e_task = RSpec::Core::RakeTask.new(:e2e)
+e2e_task.pattern  = './spec/lib/flower_shop_spec.rb'
 
 task :default => :spec
 

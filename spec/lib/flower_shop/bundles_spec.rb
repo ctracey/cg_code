@@ -41,7 +41,7 @@ describe "FlowerShop::Bundles" do
       subject.add_bundle(10)
 
       string = subject.to_s
-      expect(string).to match /^\t2 X 10/
+      expect(string).to match /^  2 X 10/
     end
 
     it "shows the price of each bundle" do
