@@ -32,36 +32,36 @@ module FlowerShop
     def calculate_bundles(order_item)
       quantity = order_item.quantity
       product_bundles = @bundle_config[order_item.code]
-      bundles = Bundles.new(product_bundles)
+      item_bundles = Bundles.new(product_bundles)
 
-      sizes = product_bundles.keys
-      sizes.sort!.reverse!
+      bundle_sizes = product_bundles.keys
+      bundle_sizes.sort!.reverse!
 
       #larger than largest bundle
-      largest = sizes.first
-      while quantity > largest do
-        bundles.add_bundle(largest)
-        quantity -= largest
+      largest_bundle = bundle_sizes.first
+      while quantity > largest_bundle do
+        item_bundles.add_bundle(largest_bundle)
+        quantity -= largest_bundle
       end
 
       #smaller than smallest bundle
-      if quantity < sizes.last
-        bundles.add_bundle(sizes.last)
-        return bundles
+      if quantity < bundle_sizes.last
+        item_bundles.add_bundle(bundle_sizes.last)
+        return item_bundles
       end
 
       #within our bundle sizes
-      sizes.each_with_index do |size, index|
+      bundle_sizes.each_with_index do |size, index|
         if quantity == size
-          bundles.add_bundle(size)
+          item_bundles.add_bundle(size)
           break
         elsif quantity > size
-          bundles.add_bundle(sizes[index-1])
+          item_bundles.add_bundle(bundle_sizes[index-1])
           break
         end
       end
 
-      bundles
+      item_bundles
     end
 
   end
