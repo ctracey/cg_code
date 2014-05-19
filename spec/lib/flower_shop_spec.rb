@@ -10,7 +10,7 @@ describe "flower_shop gem" do
     end
   end
 
-  describe "flower_shop_invocer command" do
+  describe "flower_shop_invoicer command" do
     it "calculates minimum bundles for an order" do
       invoice = `flower_shop_invoicer spec/fixtures/order.txt`
       expect(invoice).to eq %{running Flower Shop Invoicer
