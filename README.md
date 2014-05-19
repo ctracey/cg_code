@@ -18,6 +18,14 @@ Run this command to install dependencies. You need to have Bundler installed.
 bundle install
 ```
 
+E2E Testing
+-----------
+You can run this rake task to execute the rspec that tests the complete solution.
+```
+bundle exec rake e2e
+```
+
+
 Building
 --------
 
