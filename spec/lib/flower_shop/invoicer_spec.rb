@@ -32,19 +32,6 @@ describe "FlowerShop::Invoicer" do
     end
   end
 
-  describe "#load_bundle_config" do
-    it "returns a hash representing the config file" do
-      order = double(FlowerShop::Order)
-      invoicer = FlowerShop::Invoicer.new(order)
-
-      bundles = invoicer.send(:load_bundle_config)
-
-      expect(bundles.keys).to include("R12")
-      expect(bundles.keys).to include("L09")
-      expect(bundles.keys).to include("T58")
-    end
-  end
-
   describe "#calculate_bundles" do
     scenarios = [
       {quantity: 10, code: "R12", expected_bundles: {10 => 1},         desc: "matching bundle size"},

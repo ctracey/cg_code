@@ -7,7 +7,7 @@ module FlowerShop
 
     def initialize(order)
       @order = order
-      @bundle_config = load_bundle_config
+      @bundle_config = BundleConfig.new(BUNDLES_CONFIG)
     end
 
     def invoice
@@ -24,18 +24,12 @@ module FlowerShop
 
     private
 
-    def load_bundle_config
-      yaml = File.read(Invoicer::BUNDLES_CONFIG)
-      YAML.load(yaml)["bundles"]
-    end
-
     def calculate_bundles(order_item)
       quantity = order_item.quantity
-      product_bundles = @bundle_config[order_item.code]
-      item_bundles = Bundles.new(product_bundles)
 
+      product_bundles = @bundle_config.product_config(order_item.code)
+      item_bundles = Bundles.new(product_bundles)
       bundle_sizes = product_bundles.keys
-      bundle_sizes.sort!.reverse!
 
       #larger than largest bundle
       largest_bundle = bundle_sizes.first
