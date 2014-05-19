@@ -9,10 +9,10 @@ module FlowerShop
     end
 
     def product_config(product_code)
-      product_config = config[product_code]
-      sorted_config = {}
-
       unless @loaded_products.has_key?(product_code)
+        product_config = config[product_code]
+        sorted_config = {}
+
         product_config.keys.sort.reverse.each do |key|
           sorted_config[key] = product_config[key]
         end
